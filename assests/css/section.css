@@ -1,0 +1,54 @@
+/* CoffeeNation Section Styles */
+#normal-section {
+    padding: 60px 40px;
+    background: #fdfaf6;
+    color: #33241b;
+}
+
+#normal-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-heading {
+    font-size: 32px;
+    font-weight: 700;
+    color: #4a2c1d;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #55443c;
+}
+
+.readme .villian .molly img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* Toast alert notification */
+.coffee-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #017143;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    z-index: 10000;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
