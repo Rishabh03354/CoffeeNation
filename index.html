@@ -4,254 +4,532 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoffeeNation India — Artisan Coffee, Handcrafted Brews & Lifestyle</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="assests/css/style.css">
     <link rel="stylesheet" href="assests/css/style_menu.css">
     <link rel="stylesheet" href="assests/css/slideshow.css">
     <link rel="stylesheet" href="assests/css/section.css">
-    
-    <title>CoffeeNationIndia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <section>
-        <div class="circle"></div>
-        <header>
-            <a href="#"><img src="https://pbs.twimg.com/profile_images/1456543407954751488/XUCYDukz_400x400.jpg" class="logo"></a>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <a href="#" class="brand-link">
+            <img src="https://pbs.twimg.com/profile_images/1456543407954751488/XUCYDukz_400x400.jpg" class="logo" alt="CoffeeNation Logo">
+            <span class="brand-text">Coffee<span>Nation</span></span>
+        </a>
+        <nav class="nav-links">
             <ul>
-                <li><a href="#slideshow">Home</a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#menu_section">Menu</a></li>
-                <li><a href="#new">What's New</a></li>
+                <li><a href="#customizer">Custom Brew</a></li>
+                <li><a href="#slideshow">Atmosphere</a></li>
+                <li><a href="#quiz-section">Coffee Quiz</a></li>
                 <li><a href="#footer_info">Contact</a></li>
-                <li><a href="signuppage.html" target="_blank">LogIn</a></li>
+                <li><a href="signuppage.html" class="nav-auth-btn" id="nav-auth-link"><i class="fa-solid fa-user"></i> <span>LogIn</span></a></li>
+                <li>
+                    <button class="cart-nav-btn" onclick="openCartDrawer()">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>Cart</span>
+                        <span class="cart-badge" id="cart-counter">0</span>
+                    </button>
+                </li>
             </ul>
-        </header>
-        <div class="container">
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="circle"></div>
+        <div class="container hero-container">
             <div class="text-box">
-                <h2>Its not just a Coffee <br>Its  <span>Coffee<span class="brown">Nation</span></span></h2>
-                <p>"CoffeeNation: Where Every Sip is a Journey."</p>
-                <a href="learn_more.html" target="_blank">learn More</a>
+                <span class="hero-tagline"><i class="fa-solid fa-fire"></i> Freshly Roasted & Handcrafted in Jaipur</span>
+                <h2>It's not just a Coffee <br>It's <span class="brand-highlight">Coffee<span class="brown">Nation</span></span></h2>
+                <p>"Where Every Sip is an Artisan Journey — Premium beans, master roasters, and cozy spaces designed for you."</p>
+                <div class="hero-buttons">
+                    <a href="#menu_section" class="btn btn-hero-primary"><i class="fa-solid fa-mug-hot"></i> Explore Menu</a>
+                    <button onclick="openCustomizerModal()" class="btn btn-hero-secondary"><i class="fa-solid fa-wand-magic-sparkles"></i> Build Custom Brew</button>
+                </div>
             </div>
             <div class="img-box">
-                <img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img1.png" class="starbucks" alt="">
+                <div class="floating-coffee-wrapper">
+                    <img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img1.png" class="starbucks" alt="Specialty Coffee Cup" id="heroCup">
+                    <div class="coffee-glow"></div>
+                </div>
             </div>
         </div>
-        <ul class="thumb">
-            <li><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb1.png" onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img1.png');changeCircleColor('#017143')"></li>
-            <li><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb2.png" onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img2.png');changeCircleColor('#0eb7495')"></li>
-            <li><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb3.png" onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img3.png');changeCircleColor('#d752b1')"></li>
-        </ul>
+        
+        <!-- Flavor / Color Palette Switcher -->
+        <div class="flavor-selector">
+            <span class="flavor-label">Pick Flavor:</span>
+            <ul class="thumb">
+                <li class="active-thumb" onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img1.png');changeCircleColor('#017143', this)" title="Iced Matcha Fusion">
+                    <img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb1.png" alt="Matcha Blend">
+                </li>
+                <li onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img2.png');changeCircleColor('#0284c7', this)" title="Caramel Macchiato Frost">
+                    <img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb2.png" alt="Caramel Blend">
+                </li>
+                <li onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img3.png');changeCircleColor('#d946ef', this)" title="Wild Berry Iced Frappe">
+                    <img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb3.png" alt="Berry Frappe">
+                </li>
+            </ul>
+        </div>
+
         <ul class="social">
-            <li><a href="#"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/facebook.png"></a></li>
-            <li><a href="https://www.instagram.com/coffeenationindia/?utm_source=ig_web_button_share_sheet" target="_blank"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/instagram.png"></a></li>
-            <li><a href="#"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/twitter.png"></a></li>
+            <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+            <li><a href="https://www.instagram.com/coffeenationindia/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
         </ul>
     </section>
     
-    <section class="readme">
-        <div class="villian">
-            <div class="molly">
-                <img src="assests/images/interior.webp" alt="">
+    <!-- Interior & Vibe Showcase -->
+    <section class="interior-showcase">
+        <div class="interior-container">
+            <div class="interior-image-card">
+                <img src="assests/images/interior.webp" alt="CoffeeNation Interior">
+                <div class="interior-overlay">
+                    <span class="interior-badge"><i class="fa-solid fa-location-dot"></i> Raja Park, Jaipur</span>
+                </div>
+            </div>
+            <div class="interior-info">
+                <span class="sub-title">Our Atmosphere</span>
+                <h2>Crafted for Conversations, Quiet Work &amp; Great Moments</h2>
+                <p>The interior of <strong>CoffeeNation India</strong> exudes a warm, rustic-modern charm with natural wooden textures, exposed red brick, and soft amber lighting. Whether catching up with friends or finding your deep focus corner, our spaces are your home away from home.</p>
+                <div class="perks-grid">
+                    <div class="perk-item"><i class="fa-solid fa-wifi"></i> High-Speed Wi-Fi</div>
+                    <div class="perk-item"><i class="fa-solid fa-plug"></i> Workstation Outlets</div>
+                    <div class="perk-item"><i class="fa-solid fa-seedling"></i> 100% Organic Beans</div>
+                    <div class="perk-item"><i class="fa-solid fa-music"></i> Curated Chill Playlists</div>
+                </div>
             </div>
         </div>
     </section>
-    <section>
-        <div>
-            <h1>About the Interior</h1>
-            <p>The interior of **CoffeeNation India** exudes a warm and inviting atmosphere, blending modern and rustic design elements to create a cozy yet contemporary feel. The space features **warm wooden floors** that complement the exposed brick walls, giving it a natural, earthy aesthetic. Large windows allow plenty of **natural light** to flood in, enhancing the brightness and openness of the café. <br>
 
-                The seating is a comfortable mix of **cushioned chairs and wooden tables**, ideal for both solo customers and small groups. The layout provides ample space for relaxation, work, or casual conversation. Overhead, **soft ambient lighting** from hanging fixtures casts a warm glow throughout, adding to the welcoming vibe. <br>
-                
-                At the counter, various **coffee machines and jars of coffee beans** are on display, along with a selection of pastries. A **chalkboard menu** on the wall showcases the coffee offerings, creating a personalized, approachable feel that invites customers to explore the variety of options available. The overall design encourages customers to linger, offering a space that feels as comfortable as home. <br></p>
+    <!-- Atmosphere Slideshow -->
+    <section id="slideshow" class="atmosphere-slider-section">
+        <div class="section-title-wrap">
+            <span class="sub-title">Visual Tour</span>
+            <h2>Moments at CoffeeNation</h2>
+        </div>
+        <div class="slideshow-wrapper">
+            <div class="slide-card active-slide">
+                <img src="assests/images/shop 1.jpg" alt="Café Counter">
+                <div class="slide-caption">Barista Station &amp; Freshly Brewed Espresso</div>
+            </div>
+            <div class="slide-card">
+                <img src="assests/images/shop 2.jpg" alt="Cozy Seating">
+                <div class="slide-caption">Quiet Corners &amp; Communal Wooden Tables</div>
+            </div>
+            <div class="slide-card">
+                <img src="assests/images/shop 3.jpg" alt="Evening Vibe">
+                <div class="slide-caption">Evening Ambience &amp; Artisan Pastries</div>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-btn prev-btn" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="slider-dots" id="sliderDots"></div>
+                <button class="slider-btn next-btn" onclick="nextSlide()"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
         </div>
     </section>
 
+    <!-- Interactive Interactive Beverage Customizer Section -->
+    <section class="customizer-section" id="customizer">
+        <div class="customizer-card">
+            <div class="customizer-header">
+                <span class="sub-title"><i class="fa-solid fa-sparkles"></i> Mixology Lab</span>
+                <h2>Build Your Signature Brew</h2>
+                <p>Tailor your roast, milk base, syrup notes, and toppings. We brew it to your exact specifications!</p>
+            </div>
+            <div class="customizer-grid">
+                <!-- Customizer Controls -->
+                <div class="customizer-controls">
+                    <div class="control-group">
+                        <label>1. Select Base Drink:</label>
+                        <div class="option-pills" id="baseOptions">
+                            <button class="pill active" data-type="base" data-name="Cold Brew Concentrate" data-price="180">Cold Brew (₹180)</button>
+                            <button class="pill" data-type="base" data-name="Espresso Double Shot" data-price="150">Espresso (₹150)</button>
+                            <button class="pill" data-type="base" data-name="Velvet Oat Latte" data-price="210">Oat Latte (₹210)</button>
+                            <button class="pill" data-type="base" data-name="Iced Matcha Latte" data-price="230">Matcha (₹230)</button>
+                        </div>
+                    </div>
 
-    <section id="slideshow">
-        <div class="slides">
-          <input type="radio" name="slide" id="slide-1" checked>
-          <input type="radio" name="slide" id="slide-2">
-          <input type="radio" name="slide" id="slide-3">
-          <!-- Add more inputs here -->
-          <img src="assests/images/shop 1.jpg" alt="Image 1" class="slide">
-          <img src="assests/images/shop 2.jpg" alt="Image 2" class="slide">
-          <img src="assests/images/shop 3.jpg" alt="Image 3" class="slide">
-          
-          <!-- Add more images here -->
-          <div class="controls">
-            <label for="slide-1" class="prev">Previous</label>
-            <label for="slide-2" class="next">Next</label>
-            <label for="slide-3" class="next">Next</label>
-            <!-- Add more labels here -->
-          </div>
+                    <div class="control-group">
+                        <label>2. Choice of Milk:</label>
+                        <div class="option-pills" id="milkOptions">
+                            <button class="pill active" data-type="milk" data-name="Whole Dairy Milk" data-price="0">Whole Milk (+₹0)</button>
+                            <button class="pill" data-type="milk" data-name="Creamy Oat Milk" data-price="40">Oat Milk (+₹40)</button>
+                            <button class="pill" data-type="milk" data-name="Almond Milk" data-price="45">Almond (+₹45)</button>
+                            <button class="pill" data-type="milk" data-name="No Milk (Black)" data-price="0">Black (+₹0)</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>3. Sweetness Level: <span id="sweetnessLabel" style="color:#017143;font-weight:700;">50% (Standard)</span></label>
+                        <input type="range" min="0" max="100" step="25" value="50" class="sweetness-slider" id="sweetnessSlider" oninput="updateSweetness(this.value)">
+                    </div>
+
+                    <div class="control-group">
+                        <label>4. Flavor Infusions &amp; Add-ons:</label>
+                        <div class="addon-checks">
+                            <label class="check-container">
+                                <input type="checkbox" data-name="Madagascar Vanilla" data-price="35" onchange="calcCustomPrice()">
+                                <span class="checkmark"></span> Madagascar Vanilla (+₹35)
+                            </label>
+                            <label class="check-container">
+                                <input type="checkbox" data-name="Salted Caramel Drizzle" data-price="35" onchange="calcCustomPrice()">
+                                <span class="checkmark"></span> Caramel Drizzle (+₹35)
+                            </label>
+                            <label class="check-container">
+                                <input type="checkbox" data-name="Whipped Cloud Cream" data-price="40" onchange="calcCustomPrice()">
+                                <span class="checkmark"></span> Whipped Cream (+₹40)
+                            </label>
+                            <label class="check-container">
+                                <input type="checkbox" data-name="Extra Espresso Shot" data-price="50" onchange="calcCustomPrice()">
+                                <span class="checkmark"></span> Extra Shot (+₹50)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customizer Preview Box -->
+                <div class="customizer-preview">
+                    <div class="preview-cup-art">
+                        <i class="fa-solid fa-mug-hot preview-cup-icon"></i>
+                    </div>
+                    <h3 id="previewTitle">Custom Brewed Beverage</h3>
+                    <ul class="preview-specs" id="previewSpecs">
+                        <li><strong>Base:</strong> Cold Brew Concentrate</li>
+                        <li><strong>Milk:</strong> Whole Dairy Milk</li>
+                        <li><strong>Sweetness:</strong> 50%</li>
+                        <li><strong>Add-ons:</strong> None</li>
+                    </ul>
+                    <div class="price-action-row">
+                        <div class="price-display">
+                            <span>Total Price</span>
+                            <h4 id="customPrice">₹180</h4>
+                        </div>
+                        <button class="btn btn-add-custom" onclick="addCustomBrewToCart()"><i class="fa-solid fa-plus"></i> Add to Order</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-      
-    <section id="normal-section">
-        <div class="container">
-          <h2 class="section-heading">Welcome to CoffeeNation India – Your Everyday Coffee Destination!</h2>
-          <p class="section-description">At CoffeeNation India, we believe great coffee should be accessible to everyone. Whether you're starting your day, taking a break, or catching up with friends, our doors are always open to serve you the perfect cup. We’re passionate about crafting quality coffee blends that cater to all tastes – from bold espresso shots to creamy lattes and everything in between. <br>
 
-            More than just a coffee shop, we’re a community. Our cozy spaces are designed for you to relax, recharge, or even get some work done. With a variety of seating options, free Wi-Fi, and an inviting atmosphere, CoffeeNation India is your go-to spot for both productivity and relaxation. <br>
+    <!-- Upgraded Menu Section with Real-Time Search & Category Filters -->
+    <section class="menu-section-wrapper" id="menu_section">
+        <div class="section-title-wrap">
+            <span class="sub-title">Handcrafted Offerings</span>
+            <h2>Our Signature Menu</h2>
+            <p>Every beverage is prepared to order using freshly ground arabica beans and artisan ingredients.</p>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="menu-filters-bar">
+            <div class="category-tabs">
+                <button class="tab-btn active" onclick="filterMenu('all', this)"><i class="fa-solid fa-border-all"></i> All</button>
+                <button class="tab-btn" onclick="filterMenu('cold', this)"><i class="fa-solid fa-snowflake"></i> Cold Brews</button>
+                <button class="tab-btn" onclick="filterMenu('hot', this)"><i class="fa-solid fa-mug-saucer"></i> Hot Classics</button>
+                <button class="tab-btn" onclick="filterMenu('shakes', this)"><i class="fa-solid fa-blender"></i> Specialty Shakes</button>
+                <button class="tab-btn" onclick="filterMenu('tea', this)"><i class="fa-solid fa-leaf"></i> Artisan Teas</button>
+            </div>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="menuSearch" placeholder="Search coffee, shake, tea..." oninput="searchMenu(this.value)">
+            </div>
+        </div>
+
+        <!-- Dynamic Menu Grid -->
+        <div class="menu-grid" id="menuGrid">
             
-            Why Choose Us? <br>
-            
-            Quality Coffee: We source the best beans to brew the freshest coffee every time. <br>
-            Affordability: Great coffee doesn't have to come with a premium price tag. Enjoy your favorites without breaking the bank. <br>
-            Community-Centered: Whether you're here for a quick cup or an extended stay, we strive to make every visit feel like home. <br>
-            Variety: From rich espresso to refreshing cold brews, there’s a cup for everyone. <br>
-            So why wait? Join us at CoffeeNation India and experience coffee in a whole new way – accessible, affordable, and always delicious.
-            
-            </p>
+            <div class="menu-card" data-category="cold" data-name="classic cold coffee" data-price="180">
+                <div class="card-img-wrap">
+                    <img src="assests/images/select 1.jpg" alt="Cold Coffee">
+                    <span class="badge-tag">Bestseller</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-rating"><i class="fa-solid fa-star"></i> 4.9 (420+ reviews)</div>
+                    <h3>Classic Cold Coffee</h3>
+                    <p>Signature cold-brewed arabica blended with chilled milk and a hint of dark cocoa.</p>
+                    <div class="card-footer">
+                        <span class="item-price">₹180</span>
+                        <button class="btn-card-add" onclick="addToCart('Classic Cold Coffee', 180, 'assests/images/select 1.jpg')"><i class="fa-solid fa-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="hot" data-name="espresso doppio" data-price="150">
+                <div class="card-img-wrap">
+                    <img src="assests/images/select 2.jpg" alt="Espresso">
+                    <span class="badge-tag">Pure Roast</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-rating"><i class="fa-solid fa-star"></i> 4.8 (310+ reviews)</div>
+                    <h3>Espresso Doppio</h3>
+                    <p>Intense double-shot extraction with thick golden crema and aromatic nutty undertones.</p>
+                    <div class="card-footer">
+                        <span class="item-price">₹150</span>
+                        <button class="btn-card-add" onclick="addToCart('Espresso Doppio', 150, 'assests/images/select 2.jpg')"><i class="fa-solid fa-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="tea" data-name="royal indian masala tea" data-price="120">
+                <div class="card-img-wrap">
+                    <img src="assests/images/select 3.jpg" alt="Indian Tea">
+                </div>
+                <div class="card-details">
+                    <div class="card-rating"><i class="fa-solid fa-star"></i> 4.9 (512+ reviews)</div>
+                    <h3>Royal Masala Chai</h3>
+                    <p>Assam CTC leaves simmered with crushed green cardamom, ginger, cloves, and whole milk.</p>
+                    <div class="card-footer">
+                        <span class="item-price">₹120</span>
+                        <button class="btn-card-add" onclick="addToCart('Royal Masala Chai', 120, 'assests/images/select 3.jpg')"><i class="fa-solid fa-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="hot" data-name="vanilla chai latte" data-price="160">
+                <div class="card-img-wrap">
+                    <img src="assests/images/select 4.jpg" alt="Chai Latte">
+                </div>
+                <div class="card-details">
+                    <div class="card-rating"><i class="fa-solid fa-star"></i> 4.7 (280+ reviews)</div>
+                    <h3>Spiced Chai Latte</h3>
+                    <p>Silky steamed micro-foam over spiced spiced chai extract with aromatic cinnamon dust.</p>
+                    <div class="card-footer">
+                        <span class="item-price">₹160</span>
+                        <button class="btn-card-add" onclick="addToCart('Spiced Chai Latte', 160, 'assests/images/select 4.jpg')"><i class="fa-solid fa-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="shakes" data-name="creamy vanilla milkshake" data-price="190">
+                <div class="card-img-wrap">
+                    <img src="assests/images/select 5.jpg" alt="Milk Shake">
+                </div>
+                <div class="card-details">
+                    <div class="card-rating"><i class="fa-solid fa-star"></i> 4.8 (195+ reviews)</div>
+                    <h3>Artisan Vanilla Shake</h3>
+                    <p>Rich Madagascar vanilla gelato blended thick with fresh dairy milk and whipped peaks.</p>
+                    <div class="card-footer">
+                        <span class="item-price">₹190</span>
+                        <button class="btn-card-add" onclick="addToCart('Artisan Vanilla Shake', 190, 'assests/images/select 5.jpg')"><i class="fa-solid fa-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="shakes" data-name="crunchy oreo thickshake" data-price="220">
+                <div class="card-img-wrap">
+                    <img src="assests/images/select 6.jpg" alt="Oreo Shake">
+                    <span class="badge-tag">Fan Favorite</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-rating"><i class="fa-solid fa-star"></i> 5.0 (640+ reviews)</div>
+                    <h3>Crunchy Oreo Shake</h3>
+                    <p>Loaded chocolate cookies crushed into thick vanilla shake, topped with cookie dust.</p>
+                    <div class="card-footer">
+                        <span class="item-price">₹220</span>
+                        <button class="btn-card-add" onclick="addToCart('Crunchy Oreo Shake', 220, 'assests/images/select 6.jpg')"><i class="fa-solid fa-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="cold" data-name="blue lagoon mocktail cooler" data-price="170">
+                <div class="card-img-wrap">
+                    <img src="assests/images/select 7.jpg" alt="Blue Lagoon">
+                </div>
+                <div class="card-details">
+                    <div class="card-rating"><i class="fa-solid fa-star"></i> 4.8 (210+ reviews)</div>
+                    <h3>Blue Lagoon Cooler</h3>
+                    <p>Vibrant citrus curacao with sparkling soda, fresh lemon wheels, and cooling mint.</p>
+                    <div class="card-footer">
+                        <span class="item-price">₹170</span>
+                        <button class="btn-card-add" onclick="addToCart('Blue Lagoon Cooler', 170, 'assests/images/select 7.jpg')"><i class="fa-solid fa-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="shakes" data-name="strawberry blossom shake" data-price="200">
+                <div class="card-img-wrap">
+                    <img src="assests/images/select 8.jpg" alt="Strawberry Shake">
+                </div>
+                <div class="card-details">
+                    <div class="card-rating"><i class="fa-solid fa-star"></i> 4.9 (380+ reviews)</div>
+                    <h3>Strawberry Blossom Shake</h3>
+                    <p>Farm-fresh strawberry compote whipped into velvet ice cream with white chocolate flakes.</p>
+                    <div class="card-footer">
+                        <span class="item-price">₹200</span>
+                        <button class="btn-card-add" onclick="addToCart('Strawberry Blossom Shake', 200, 'assests/images/select 8.jpg')"><i class="fa-solid fa-plus"></i> Add</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-
-    <section class="menu" id="menu_section">
-        <span>Menu</span>
-        <div class="menu-section">
-        <div class="first big-box">
-            <div class="box">
-                <div class="img">
-                    <img src="assests/images/select 1.jpg" alt="">
+    <!-- Interactive Interactive Coffee Quiz -->
+    <section class="quiz-section" id="quiz-section">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <span class="sub-title"><i class="fa-solid fa-compass"></i> Flavor Compass</span>
+                <h2>Find Your Perfect Roast in 10 Seconds</h2>
+                <p>Answer two quick questions to discover your personalized CoffeeNation match!</p>
+            </div>
+            <div class="quiz-card" id="quizCard">
+                <div class="quiz-step" id="quizStep1">
+                    <h3>Step 1 of 2: What flavor mood are you in?</h3>
+                    <div class="quiz-options">
+                        <button class="btn-quiz-opt" onclick="selectQuizAnswer('flavor', 'bold')">☕ Bold, Dark &amp; Strong</button>
+                        <button class="btn-quiz-opt" onclick="selectQuizAnswer('flavor', 'creamy')">🍨 Sweet, Creamy &amp; Dessert-like</button>
+                        <button class="btn-quiz-opt" onclick="selectQuizAnswer('flavor', 'fruity')">🍋 Fruity, Refreshing &amp; Light</button>
+                    </div>
                 </div>
-                <div class="box-info">
-                    <h4>Cold Coffee</h4>
-                    <button>Add to Cart</button>
+                <div class="quiz-step" id="quizStep2" style="display:none;">
+                    <h3>Step 2 of 2: Preferred serving temperature?</h3>
+                    <div class="quiz-options">
+                        <button class="btn-quiz-opt" onclick="finishQuiz('iced')">🧊 Iced &amp; Chilled</button>
+                        <button class="btn-quiz-opt" onclick="finishQuiz('hot')">🔥 Steaming Hot</button>
+                    </div>
+                </div>
+                <div class="quiz-step" id="quizResult" style="display:none;">
+                    <div class="result-celebration">🎉 Your Perfect Match!</div>
+                    <h3 id="resultTitle">Crunchy Oreo Thickshake</h3>
+                    <p id="resultDesc">Rich chocolate, smooth vanilla ice cream, and handcrafted bliss.</p>
+                    <div class="result-actions">
+                        <button class="btn btn-hero-primary" id="resultAddBtn"><i class="fa-solid fa-plus"></i> Add Recommendation to Cart</button>
+                        <button class="btn btn-hero-secondary" onclick="resetQuiz()">🔄 Retake Quiz</button>
+                    </div>
                 </div>
             </div>
-            <div class="box">
-                <div class="img">
-                    <img src="assests/images/select 2.jpg" alt="">
-                </div>
-                <div class="box-info">
-                    <h4>Espresso</h4>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-            <div class="box">
-                <div class="img">
-                    <img src="assests/images/select 3.jpg" alt="">
-                </div>
-                <div class="box-info">
-                    <h4>Indian Tea</h4>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-            <div class="box">
-                <div class="img">
-                    <img src="assests/images/select 4.jpg" alt="">
-                </div>
-                <div class="box-info">
-                    <h4>Chai Latte</h4>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="second big-box">
-            <div class="box">
-                <div class="img">
-                    <img src="assests/images/select 5.jpg" alt="">
-                </div>
-                <div class="box-info">
-                    <h4>Milk Shake</h4>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-            <div class="box">
-                <div class="img">
-                    <img src="assests/images/select 6.jpg" alt="">
-                </div>
-                <div class="box-info">
-                    <h4>Oreo Shake</h4>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-            <div class="box">
-                <div class="img">
-                    <img src="assests/images/select 7.jpg" alt="">
-                </div>
-                <div class="box-info">
-                    <h4>Blue Lagoon</h4>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-            <div class="box">
-                <div class="img">
-                    <img src="assests/images/select 8.jpg" alt="">
-                </div>
-                <div class="box-info">
-                    <h4>Strawberry Shake</h4>
-                    <button>Add to Cart</button>
-                </div>
-            </div>
-        </div>
         </div>
     </section>
 
-
-
+    <!-- What's New Feature Callout -->
     <section class="whatsnew" id="new">
-        <div>
-            <h2 class="brown">What's New In CoffeeNationIndia</h2>
-            <p>Welcome to CoffeeNation India, your ultimate destination for premium coffee and exclusive merchandise! We've just launched an exciting new range of coffee blends, handpicked from the finest coffee estates across India, to bring you rich and authentic flavors in every cup. Along with our signature coffee, explore our curated collection of stylish merchandise, from eco-friendly mugs to chic apparel, designed for the true coffee lover. Our revamped online store now offers a seamless shopping experience, making it easier than ever to get your favorite products delivered right to your door. Keep an eye out for upcoming limited-edition items and special promotions that celebrate the vibrant coffee culture of India. At CoffeeNation India, we’re more than just coffee—we’re a lifestyle.</p>
+        <div class="container whatsnew-content">
+            <span class="sub-title">Seasonal Specials</span>
+            <h2>What's Brewing at CoffeeNation</h2>
+            <p>We've launched our single-origin harvest collection sourced directly from Chikmagalur and Coorg. Paired with limited-batch bean jars, artisan travel mugs, and doorstep delivery across India. Visit our Raja Park outlet or place your order today!</p>
+            <div class="features-pill-row">
+                <span><i class="fa-solid fa-truck-fast"></i> 30-Min Fast City Delivery</span>
+                <span><i class="fa-solid fa-rotate-left"></i> 100% Quality Guarantee</span>
+                <span><i class="fa-solid fa-tags"></i> Code COFFEE10 for 10% Off</span>
+            </div>
         </div>
     </section>
 
+    <!-- Slide-Out Shopping Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping"></i> Your CoffeeNation Order</h3>
+            <button class="close-drawer-btn" onclick="closeCartDrawer()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body" id="cartItemsList">
+            <div class="empty-cart-state">
+                <i class="fa-solid fa-mug-saucer empty-icon"></i>
+                <p>Your bag is currently empty.</p>
+                <button class="btn btn-hero-primary" onclick="closeCartDrawer();location.href='#menu_section'">Browse Menu</button>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display:none;">
+            <div class="promo-box">
+                <input type="text" id="promoInput" placeholder="Promo code (try COFFEE10)">
+                <button onclick="applyPromo()">Apply</button>
+            </div>
+            <div class="cart-summary">
+                <div class="summary-row"><span>Subtotal:</span> <strong id="cartSubtotal">₹0</strong></div>
+                <div class="summary-row" id="discountRow" style="display:none;color:#017143;"><span>Discount (10%):</span> <strong id="cartDiscount">-₹0</strong></div>
+                <div class="summary-row"><span>Taxes (5% GST):</span> <strong id="cartTax">₹0</strong></div>
+                <div class="summary-row total-row"><span>Total Payable:</span> <strong id="cartTotal">₹0</strong></div>
+            </div>
+            <button class="btn-checkout" onclick="openCheckoutModal()"><i class="fa-solid fa-lock"></i> Proceed to Checkout</button>
+        </div>
+    </div>
 
+    <!-- Checkout Confirmation Modal -->
+    <div class="checkout-modal-overlay" id="checkoutModal">
+        <div class="checkout-card">
+            <div class="success-icon-wrap"><i class="fa-solid fa-circle-check"></i></div>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for choosing <strong>CoffeeNation</strong>. Our baristas are preparing your handcrafted order right now!</p>
+            <div class="order-receipt" id="orderReceipt">
+                <!-- Receipt details populated via JS -->
+            </div>
+            <button class="btn btn-hero-primary" onclick="finishOrder()">Back to CoffeeNation</button>
+        </div>
+    </div>
 
+    <!-- Interactive Customizer Modal (Quick Trigger) -->
+    <div class="modal-overlay" id="customizerModalWrap">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="closeCustomizerModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modalCustomizerTarget"></div>
+        </div>
+    </div>
 
+    <!-- Notification Toast Container -->
+    <div class="coffee-toast" id="coffeeToast">Item added to cart!</div>
 
+    <!-- Footer -->
+    <footer class="footer" id="footer_info">
+        <div class="footer-container">
+            <div class="footer-block brand-col">
+                <div class="brand-footer-logo">
+                    <img src="https://pbs.twimg.com/profile_images/1456543407954751488/XUCYDukz_400x400.jpg" alt="Brand Logo" class="footer-logo">
+                    <span class="brand-footer-title">Coffee<span>Nation</span></span>
+                </div>
+                <p class="address"><i class="fa-solid fa-location-dot"></i> Raja Park, Jaipur, Rajasthan, 302017</p>
+                <p class="phone"><i class="fa-solid fa-phone"></i> +91 78380 88501</p>
+                <p class="email"><i class="fa-solid fa-envelope"></i> contact@coffeenation.in</p>
+            </div>
+            <div class="footer-block">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="developers.html">About Founder &amp; Team</a></li>
+                    <li><a href="learn_more.html">Our Coffee Heritage</a></li>
+                    <li><a href="#menu_section">Order Online</a></li>
+                    <li><a href="#customizer">Custom Mixology</a></li>
+                </ul>
+            </div>
+            <div class="footer-block">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#slideshow">Café Gallery</a></li>
+                    <li><a href="#quiz-section">Coffee Taste Quiz</a></li>
+                    <li><a href="signuppage.html">Customer Login</a></li>
+                    <li><a href="signuppage.html">Member Perks</a></li>
+                </ul>
+            </div>
+            <div class="footer-block newsletter-col">
+                <h4>Join CoffeeNation Club</h4>
+                <p>Get 10% off your first order plus secret seasonal tasting invitations!</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault();alert('Welcome to the CoffeeNation Club! Code COFFEE10 has been unlocked.');this.reset();">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+                <div class="footer-social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/coffeenationindia/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://github.com/Rishabh03354/CoffeeNation" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CoffeeNation India. Developed with pride by <strong>Rishabh Batwara</strong>. All rights reserved.</p>
+        </div>
+    </footer>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Footer Section -->
-    <!-- HTML Structure -->
-<footer class="footer" id="footer_info">
-  <div class="footer-container">
-  <div class="footer-block">
-      <img src="https://pbs.twimg.com/profile_images/1456543407954751488/XUCYDukz_400x400.jpg" alt="Brand Logo" class="footer-logo">
-      <h3 class="brand-name">CoffeeNation</h3>
-      <p class="address">Raja Park<br>Jaipur, Rajasthan, 302017</p>
-  </div>
-  <div class="footer-block">
-      <h4>Quick Links</h4>
-      <ul>
-          <li><a href="developers.html">About Us</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contact</a></li>
-      </ul>
-  </div>
-  <div class="footer-block">
-      <h4>Resources</h4>
-      <ul>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Support</a></li>
-      </ul>
-  </div>
-  <div class="footer-block social-media">
-      <h4>Follow Us</h4>
-      <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="https://www.instagram.com/coffeenationindia/?utm_source=ig_web_button_share_sheet">Instagram</a></li>
-          <li><a href="#">LinkedIn</a></li>
-      </ul>
-  </div>
-</div>
-</footer>
-
-	<script src="script.js"></script>
+    <!-- Master Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>
